@@ -1,0 +1,90 @@
+<html>
+<head>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.stock.min.js"></script>
+<script type="text/javascript" src="./dist/canvasjsinputfieldtypechanger.min.js"></script>
+<script>
+window.onload = function () {
+  var dps1 = [], dps2= [];
+  var stockChart = new CanvasJS.StockChart("stockChartContainer",{
+    theme: "light2",
+    exportEnabled: true,
+    title:{
+      text:"StockChart with Date-Time Axis"
+    },
+    subtitles: [{
+      text: "Bitcoin Price (in USD)"
+    }],
+    charts: [{
+      axisX: {
+        crosshair: {
+          enabled: true,
+          snapToDataPoint: true
+        }
+      },
+      axisY: {
+        prefix: "$"
+      },
+      data: [{
+        type: "candlestick",
+        yValueFormatString: "$#,###.##",
+        dataPoints : dps1
+      }]
+    }],
+    navigator: {
+      data: [{
+        dataPoints: dps2
+      }],
+      slider: {
+        minimum: new Date(2018, 04, 01),
+        maximum: new Date(2018, 06, 01)
+      }
+    }
+  });
+  $.getJSON("https://canvasjs.com/data/docs/btcusd2018.json", function(data) {
+    for(var i = 0; i < data.length; i++){
+      dps1.push({x: new Date(data[i].date), y: [Number(data[i].open), Number(data[i].high), Number(data[i].low), Number(data[i].close)]});
+      dps2.push({x: new Date(data[i].date), y: Number(data[i].close)});
+    }
+    stockChart.render();
+	stockChart.ChangeInputFieldsType();
+  });
+}
+
+</script>
+</head>
+<body>
+<h1 id="canvasjs-inputfields-type-changer">CanvasJS Inputfields Type Changer</h1>
+<p>This is a plugin for CanvasJS StockCharts that lets you add HTML5 datepicker to inputfields of StockChart just by adding a line of code.</p>
+<h3 id="how-to-use-">How to Use?</h3>
+<ul>
+  <li>Create and Render CanvasJS StockChart</li>
+  <li>Call ChangeInputFieldsType method
+<pre>
+var stockChart = new CanvasJS.StockChart(&quot;stockChartContainer&quot;, {
+.
+.
+.
+//StockChart Options
+.
+.
+.
+});
+stockChart.render();
+stockChart.ChangeInputFieldsType();
+/* 
+or
+CanvasJS.ChangeInputFieldsType(); //If you like to change type of inputfields across all the StockCharts in the page
+*/
+</pre>
+
+<h5 id="note-">Note:</h5>
+<ul>
+  <li>Plugin was last tested with <strong>CanvasJS StockChart v1.3.2GA</strong></li>
+  <li>This plugin requires you to have CanvasJS License. Please visit <strong><a href="https://canvasjs.com/license/">CanvasJS</a></strong> for more info.</li>
+</ul>
+<h3>Example</h3>
+<div id="stockChartContainer" style="width: 80%; height: 450px; margin: auto"></div>
+</body>
+</html>
+
