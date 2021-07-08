@@ -1,6 +1,7 @@
 # CanvasJS Inputfields Type Changer
 
 This is a plugin for CanvasJS StockCharts that lets you add HTML5 datepicker to inputfields of StockChart just by adding a line of code.
+![HTML5 DatePicker in CanvasJS StockChart](https://raw.githubusercontent.com/vishwas-r/CanvasJS-Inputfields-Type-Changer/main/screenshots/inputfield%20-%20endvalue.jpg)
 
 ### How to Use?
 - Create and Render CanvasJS StockChart
