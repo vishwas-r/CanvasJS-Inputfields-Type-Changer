@@ -26,5 +26,5 @@ CanvasJS.ChangeInputFieldsType(); //If you like to change type of inputfields ac
 
 
 ##### Note: 
-- Plugin was last tested with **CanvasJS StockChart v1.3.2GA**
+- Plugin was last tested with **CanvasJS StockChart v1.4 Beta 1**
 - This plugin requires you to have CanvasJS License. Please visit **[CanvasJS](https://canvasjs.com/license/)** for more info.
